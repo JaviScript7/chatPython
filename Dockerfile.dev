@@ -1,0 +1,23 @@
+#Este es un docker file configurado para un entorno de desarollo
+
+#Elegimos la imagen base con la version respectiva
+FROM python:3.12
+
+#Indicamos quien es el respnsable de mantener el contenedor
+LABEL Maintainer = "JaviScript"
+
+#Creamos el directorio de la aplicacion
+RUN mkdir -p /home/app
+
+#Compiamos requirements.txt
+COPY requirements.txt /home/app
+#Establecemos el espacio de trabajo
+WORKDIR /home/app
+
+#Exponemos el puerto en este caso para Flask
+EXPOSE 5000
+
+#Instalamos las dependencias necesarios para correr el programa
+RUN pip install --no-cache-dir -r /home/app/requirements.txt
+
+CMD ["bash"]

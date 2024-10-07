@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  db_monguito:
+    image: mongo
+    container_name: db_monguito
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=monguito
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    networks:
+      - red_chat
+
+  chat_api:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db_monguito
+    networks:
+      - red_chat
+    
+  
+#Si no tenemos creada nuestra red podemos usar estas lineas 
+networks:
+  red_chat:
+    driver: bridge 
