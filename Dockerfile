@@ -1,7 +1,7 @@
 #Esto es un dockerfile para un entorno de produccion
 
 #Elegimos la imagen base con la version respectiva
-FROM python:3.8
+FROM python:3.12
 
 #Indicamos quien es el respnsable de mantener el contenedor
 LABEL Maintainer = "JaviScript"
